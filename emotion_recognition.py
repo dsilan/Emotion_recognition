@@ -1,3 +1,4 @@
+
 import cv2
 import numpy as np
 import pandas as pd
@@ -34,18 +35,15 @@ faces, emotions = load_dataset()
 faces = preprocess_input(faces)
 xtrain, xtest, ytrain, ytest = train_test_split(faces, emotions, test_size=0.2, shuffle=True)
 
-
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 import imutils
-import cv2
-import numpy as np
-import sys
+
  
 # parameters for loading data and images
-detection_model_path = 'model/haarcascade_frontalface_default.xml'
-emotion_model_path = 'model/_mini_XCEPTION.106-0.65.hdf5'
-img_path = sys.argv[1]
+detection_model_path = './model/haarcascade_frontalface_default.xml'
+emotion_model_path = './model/_mini_XCEPTION.106-0.65.hdf5'
+img_path = "../img/mark.png"
  
 # hyper-parameters for bounding boxes shape
 # loading models
@@ -75,8 +73,6 @@ if len(faces) > 0:
 cv2.imshow('test_face', orig_frame)
 cv2.imwrite('test_output/'+img_path.split('/')[-1],orig_frame)
 cv2.waitKey(2000)
-"""
-if (cv2.waitKey(2000) &amp;amp;amp;amp; 0xFF == ord('q')):
-    sys.exit("Thanks")
-"""
+
+
 cv2.destroyAllWindows()
