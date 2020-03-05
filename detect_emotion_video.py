@@ -16,11 +16,11 @@ ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
-from keras.preprocessing.image import img_to_array
-from keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.models import load_model
 import sys
 from sklearn.model_selection import train_test_split
-emotion_model_path = 'model/_mini_XCEPTION.106-0.65.hdf5'
+emotion_model_path = 'model/deneme2_mini_XCEPTION.69-0.84.hdf5'
 emotion_classifier = load_model(emotion_model_path, compile=False)
 EMOTIONS = ["angry","disgust","scared", "happy", "sad", "surprised","neutral"]
 
@@ -31,6 +31,7 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 # Xception model transfer learning
 image_size=(48,48)
+"""
 new_dataset = '../emotion_dataset/yeni/trainv.csv'
 raw_data = pd.read_csv(new_dataset)
 
@@ -59,7 +60,7 @@ def preprocess_input(x, v2=True):
 faces, emotions = load_data(raw_data)
 faces = preprocess_input(faces)
 xtrain, xtest,ytrain,ytest = train_test_split(faces, emotions,test_size=0.2,shuffle=True)
-"""
+
 from keras.callbacks import CSVLogger, ModelCheckpoint, EarlyStopping
 from keras.callbacks import ReduceLROnPlateau
 from keras.preprocessing.image import ImageDataGenerator
