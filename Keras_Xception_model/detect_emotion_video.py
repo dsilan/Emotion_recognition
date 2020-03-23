@@ -20,7 +20,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import sys
 from sklearn.model_selection import train_test_split
-emotion_model_path = 'model/deneme2_mini_XCEPTION.69-0.84.hdf5'
+emotion_model_path = 'model/mini_Xception_d4_mini_XCEPTION.41-0.85.hdf5'
 emotion_classifier = load_model(emotion_model_path, compile=False)
 EMOTIONS = ["angry","disgust","scared", "happy", "sad", "surprised","neutral"]
 
